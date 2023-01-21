@@ -1,60 +1,79 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import Image from "next/image";
+import { useMediaQuery, useTheme } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Product", "Our Story", "Resources"];
 
 function ResponsiveAppBar() {
+  const theme = useTheme();
+  const downMed = useMediaQuery(theme.breakpoints.down("md"));
+  const downSm = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <AppBar position="static" style={{ margin: 0 }}>
+    <AppBar position="static" style={{ background: "#000" }}>
       <Container maxWidth="xl">
+        {/* style={{background:"#fff"}}  */}
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
-            <Image
-              src="/logo.png"
-              alt="Picture of the author"
-              width="40"
-              height="40"
-            />
-
-            <Menu
-              id="menu-appbar"
-              sx={{
-                display: { xs: "block", md: "block", sm: "block" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <MenuIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Image
+            src="/logo.png"
+            alt="Picture of the author"
+            style={{ marginLeft: "3vw" }}
+            width="34"
+            height="34"
+          />
+          <Box
+            sx={{
+              flexGrow: 1,
+              marginLeft: "1vw",
+              display: { xs: "none", md: "flex" },
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  marginLeft: "2vw",
+                  fontSize: "16px",
+                  my: 2,
+                  textTransform: "none",
+                  fontFamily: "gl",
+                  color: "white",
+                  display: "block",
+                  display: "flex",
+                }}
               >
-                {page}
+                {page}{" "}
+                {page != "Our Story" && (
+                  <KeyboardArrowDownIcon style={{ paddingTop: "1px" }} />
+                )}
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}></Box>
+          {!downMed && (
+            <Button
+              style={{
+                padding: "0.75rem 1.5rem",
+                border: "1px #000",
+                borderRadius: "0.6rem",
+                backgroundImage: "linear-gradient(135deg,#0084e9,#762cec)",
+                color: "#fff",
+                fontFamily: "gl",
+                textTransform: "none",
+              }}
+            >
+              Book a Demo
+            </Button>
+          )}
+          {/* {downSm && (
+            <div style={{ display:"flex", flexDirection:"row-reverse"}}>
+              <Button style={{ }}>hi</Button>
+            </div>
+          )} */}
         </Toolbar>
       </Container>
     </AppBar>
