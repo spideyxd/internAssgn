@@ -15,7 +15,7 @@ function ResponsiveAppBar() {
   const downMed = useMediaQuery(theme.breakpoints.down("md"));
   const downSm = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <AppBar position="static" style={{ background: "#000" }}>
+    <AppBar  style={{ background: "#000" }}>
       <Container maxWidth="xl">
         {/* style={{background:"#fff"}}  */}
         <Toolbar disableGutters>
