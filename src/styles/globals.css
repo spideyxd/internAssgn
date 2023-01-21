@@ -5,6 +5,15 @@
    
 font-style:bold ;
 
+  }
+
+  @font-face {
+    font-family: "glb";
+    src: url('../../fonts/GTWalsheimPro-Bold.ttf');
+    font-weight: 400;
+   
+font-style:bold ;
+
     
   }
 
