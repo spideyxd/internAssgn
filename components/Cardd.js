@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const Cardd = () => {
+const Cardd = (props) => {
   return (
     <Card sx={{ minWidth: 275 }} style={{border: "none", boxShadow: "none", marginLeft:"5vw",width:"33vw" }}>
       <CardContent>
@@ -15,11 +15,11 @@ const Cardd = () => {
           color="#000"
           gutterBottom
         >
-          Automated Candidate Follow-ups
+         {props.heading}
         </Typography>
 
         <Typography style={{fontSize:"1.125rem ",color:"#4d4d4d"}} variant="body2">
-        For prospective candidates, send automated, periodic follow-ups and value-adds to nurture long-term relationships
+        {props.subHeading}
         </Typography>
       </CardContent>
     </Card>
