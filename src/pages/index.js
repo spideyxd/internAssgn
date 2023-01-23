@@ -64,12 +64,12 @@ useEffect(() => {
              
         {/* NON STICKY LAYER 1 */}
        
-        { data.texts.map((item,idx)=> ( <ParallaxLayer 
+        { data.texts.map((item,idx)=> ( <ParallaxLayer key={1}
           offset={idx+1}
           speed={1.5}
           style={{ ...alignCenter, justifyContent: "flex-start" }}
         >
-          <Cardd heading={item.heading} subHeading={item.description} />
+          <Cardd  heading={item.heading} key={1} subHeading={item.description} />
         </ParallaxLayer>)) }
       </Parallax>
      
