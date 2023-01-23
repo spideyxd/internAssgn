@@ -4,23 +4,39 @@ import Cardd from "./Cardd";
 import React, { useState, useEffect } from "react";
 
 
-
-
 const Section = (data) => {
   
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+
+    
+  }, []);
+
   const alignCenter = { display: "flex", alignItems: "center" };
   
 
   return (
     <div>
+      
       {/* SCROLL TO  */}
       <Parallax pages={5}>
         <ParallaxLayer
           offset={0}
           speed={1.5}
-          style={{ ...alignCenter, justifyContent: "center" }}
+          style={{ ...alignCenter, justifyContent: "center", }}
         >
-          <p className={styles.scrollText}>Double the hires, half the effort</p>
+          <p   className={styles.scrollText}>Double the hires, half the effort</p>
         </ParallaxLayer>
 
         {/* STICKY LAYER  */}
@@ -44,7 +60,8 @@ const Section = (data) => {
             />
           </div>
         </ParallaxLayer>
-
+        
+             
         {/* NON STICKY LAYER 1 */}
        
         { data.data.texts.map((item,idx)=> ( <ParallaxLayer
@@ -55,6 +72,7 @@ const Section = (data) => {
           <Cardd heading={item.heading} subHeading={item.description} />
         </ParallaxLayer>)) }
       </Parallax>
+      {console.log(scrollY)}
     </div>
   );
 };
